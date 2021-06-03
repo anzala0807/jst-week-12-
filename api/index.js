@@ -41,7 +41,7 @@ bot.on('message', (msg) => {
                 parseFloat(s[0]), // string to float
                 parseFloat(s[1])
             ]
-        ).then((jres)=>{
+        ).then((jres1)=>{
             v = parseFloat(jres1[0])
             p = parseFloat(jres1[1])
             
@@ -84,7 +84,7 @@ r.get('/classify/:i/:r', function(req, res, next) {
                 parseFloat(req.params.i), //string nofloat
                 parseFloat(req.params.r),
         ]
-       ).then(jres)=>{
+       ).then((jres)=>{
            cls_model.classify(
                [
                 parseFloat(req.params.i), //string nofloat
