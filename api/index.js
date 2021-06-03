@@ -38,14 +38,14 @@ bot.on('message', (msg) => {
         
         model.predict(
             [
-                parseFloat(s[0]), // string to float
-                parseFloat(s[1])
+               i, // string to float
+               r
             ]
         ).then((jres1)=>{
             v = parseFloat(jres1[0])
             p = parseFloat(jres1[1])
             
-            cls_model.classify([i, r, v, p)].then((jres2) =>{
+            cls_model.classify([i, r, v, p]).then((jres2) =>{
                 bot.sendMessage(
                     msg.chat.id,
                     `nilai v yang diprediksi adalah ${v} volt`
@@ -58,8 +58,8 @@ bot.on('message', (msg) => {
                     msg.chat.id,
                     `klasifikasi tegangan ${jres2}`
                 );   
-            )} 
-})
+            }) 
+        })
     }else{
         state = 0
     }
