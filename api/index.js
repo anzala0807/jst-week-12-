@@ -10,18 +10,20 @@ const TelegramBot = require('node-telegram-bot-api');
 const token = '1877669223:AAFhUivKLRH-FVt7CeEuJEOfcV-sibI1xiY'
 const bot = new TelegramBot(token, {polling: true});
 
-state = 0;
-// Main Menu Bot
+
+// bots
 bot.onText(/\/start/, (msg) => { 
+    console.log(msg)
     bot.sendMessage(
         msg.chat.id,
         `hello ${msg.chat.first_name}, welcome...\n
         click  /predict to know about i and v`
     );   
-state = 0;
 });
 
-//input requires i and r 
+
+
+state = 0;
 bot.onText(/\/predict/, (msg) => { 
     bot.sendMessage(
         msg.chat.id,
@@ -35,15 +37,14 @@ bot.on('message', (msg) => {
         s = msg.text.split("|");
         i = s[0]
         v = s[1]
-        
         model.predict(
             [
-             parseFloat(dt[0]), // string to float
-             parseFloat(dt[1])
+                parseFloat(s[0]), // string to float
+                parseFloat(s[1])
             ]
-        ).then((jres1) => {
-            v = parseFloat(jres1[0])
-            p = parseFloat(jres1[1])
+        ).then((jres)=>{
+            v = parseFloat(jres[0])
+            p = parseFloat(jres[1])
             
             cls_model.classify([i, r, v, p]).then((jres2) =>{
                 bot.sendMessage(
