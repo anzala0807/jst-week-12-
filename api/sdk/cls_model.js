@@ -8,14 +8,14 @@ function normalized(data){ // i & r
     return [i, r, v, p]
 }
 
-const ArgFact = (compareFn) => (array) => array.map((el, idx) => [el, idx]).reduce(compareFn)[1]
-const ArgMax = ArgFact((min, el) => (el[0] > min[0] ? el : min))
+const argFact = (compareFn) => (array) => array.map((el, idx) => [el, idx]).reduce(compareFn)[1]
+const argMax = ArgFact((min, el) => (el[0] > min[0] ? el : min))
 
 function ArgMax(res){
   label = "NORMAL"
-    if(ArgMax(res) == 1){
+    if(argMax(res) == 1){
         label = "OVER VOLTAGE"
-    }if(ArgMax(res) == 2){
+    }if(argMax(res) == 2){
         label = "DROP VOLTAGE"
     }
   return label 
