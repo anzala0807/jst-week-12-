@@ -41,7 +41,7 @@ bot.on('message', (msg) => {
              parseFloat(dt[0]), // string to float
              parseFloat(dt[1])
             ]
-        ).then((jres1)=>{
+        ).then((jres1) => {
             v = parseFloat(jres1[0])
             p = parseFloat(jres1[1])
             
