@@ -22,10 +22,10 @@ function ArgMax(res){
 }
 
 async function classify(data){
-    let in_dim = 4;
+    let in_dim = 4; // i r v p 
     
     data = normalized(data);
-    shape = [1, in_dim]; // i r v p 
+    shape = [1, in_dim]; 
 
     tf_data = tf.tensor2d(data, shape);
 
